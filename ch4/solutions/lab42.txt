@@ -1,0 +1,15 @@
+CONTEXT: You will be provided with Python code in the Python editor with explanation enclosed with
+{{{ CODE_EXPLANATION }}} that may contain errors enclosed with {{{ ERRORS }}}.
+
+TASK: Fix the errors in the code. 
+
+CODE_EXPLANATION: {{{
+Run 10 random multiplication quizzes and provide feedback about each to the user
+}}}
+
+ERRORS: {{{
+1. Compilation
+2. Reproducibility of random number generation
+3. Logical scoping of variable assignments
+4. Error handling for input casting
+}}} 

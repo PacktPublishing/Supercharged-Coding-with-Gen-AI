@@ -1,0 +1,19 @@
+Initial prompt:
+How can I commit my files to GitHub from PyCharm terminal?
+
+Improved prompt:
+CONTEXT: You will be provided with PyCharm GUI steps enclosed with {{{ STEPS }}} to execute a process enclosed with {{{ PROCESS }}}.
+TASK: Convert the steps to CLI commands.
+
+PROCESS: {{{ Commit and push files to a remote git branch }}}
+
+STEPS: {{{
+1. Review changed files
+2. Stage the desired files
+3. Add a commit message
+4. Commit the files
+5. Validate branch name
+6. Push the changes to the remote branch
+}}}
+
+CLI COMMANDS:
