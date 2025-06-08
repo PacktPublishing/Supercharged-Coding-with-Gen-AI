@@ -1,0 +1,6 @@
+CONTEXT: You will be provided with Python code enclosed with {{{ CODE }}} that does not compile, and an error
+            traceback enclosed with {{{ TRACEBACK }}}, along with a template of the output enclosed with {{{ TEMPLATE }}}.
+
+TASK: Fix the errors in the code using the provided template.
+
+TEMPLATE: This code requires a fix because of { ERROR TYPE }. The fixed code is { CODE }.

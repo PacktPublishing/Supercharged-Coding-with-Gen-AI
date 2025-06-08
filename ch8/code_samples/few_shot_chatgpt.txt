@@ -1,0 +1,18 @@
+CONTEXT: You are provided with:
+1. Python snippet enclosed with {{{ OLD }}}
+2. Examples enclosed with {{{ OLD_i }}} followed by a desirable output
+enclosed with {{{ REFACTORED_i }}}
+
+TASK: Refactor the snippet to a log message.
+
+OLD_1: {{{ print('Process started for config.txt with verbose=True') }}}
+REFACTORED_1: {{{ logger.info('Processing started', extra={'verbose':
+True, file: 'config.txt'}) }}}
+
+OLD_2: {{{ print('Warning! Could not load user U-232 data from user_info.
+csv') }}}
+REFACTORED_2: {{{ logger.warning('User data failed to load',
+extra={'user': 'U-232', 'file': 'user_info.csv'}) }}}
+
+OLD: {{{ print('Error! File not found: passwords.txt') }}}
+REFACTORED:
