@@ -1,0 +1,22 @@
+CONTEXT: You are provided with:
+1. A Python function implementation enclosed with {{{ FUNCTION }}}
+2. Lines to be refactored enclosed with {{{ OLD }}}
+3. A library to be used in the new code enclosed with {{{ LIBRARY }}}
+TASK: Return a new implementation for the old lines using the specified library.
+
+FUNCTION: {{{ def get_euclidean_dist(a, b):
+    print("Info: computing L2 distance...")
+    dist_2 = 0
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            dist_2 += (a[i][j] - b[i][j]) ** 2
+    return np.sqrt(dist_2)
+ }}}
+OLD: {{{     dist_2 = 0
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            dist_2 += (a[i][j] - b[i][j]) ** 2
+    return np.sqrt(dist_2)  }}}
+LIBRARY: {{{ NumPy }}}
+
+REFACTORED CODE:
