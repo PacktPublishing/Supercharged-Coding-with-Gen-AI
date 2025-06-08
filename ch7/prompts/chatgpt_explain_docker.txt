@@ -1,0 +1,23 @@
+CONTEXT: you are provided with:
+1. A Dockerfile enclosed with {{{ DOCKERFILE }}}
+2. A line from the file enclosed with {{{ LINE }}}.
+
+TASK: Explain the purpose of the line.
+
+DOCKERFILE: {{{ FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+}}}
+
+LINE: {{{EXPOSE 5000}}}
+
+EXPLANATION:

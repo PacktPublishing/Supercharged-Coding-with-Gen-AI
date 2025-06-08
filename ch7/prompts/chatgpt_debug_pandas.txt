@@ -1,0 +1,33 @@
+CONTEXT: Given Pandas DataFrame 2.2.3 class, you are provided with:
+1. Pandas DataFrame method to be called enclosed with {{{ FUNCTION }}}
+2. Arguments requirements enclosed with {{ REQUIREMENTS }}}.
+
+TASK: Generate a method call with sample parameters that meet the data requirements
+
+
+FUNCTION: {{{
+    def _constructor_from_mgr(self, mgr, axes) -> DataFrame:
+        df = DataFrame._from_mgr(mgr, axes=axes)
+
+        if type(self) is DataFrame:
+            # This would also work `if self._constructor is DataFrame`, but
+            #  this check is slightly faster, benefiting the most-common case.
+            return df
+
+        elif type(self).__name__ == "GeoDataFrame":
+            # Shim until geopandas can override their _constructor_from_mgr
+            #  bc they have different behavior for Managers than for DataFrames
+            return self._constructor(mgr)
+
+        # We assume that the subclass __init__ knows how to handle a
+        #  pd.DataFrame object.
+        return self._constructor(df)
+}}}
+
+REQUIREMENTS: {{{
+1. 5 rows
+2. 3 columns
+3. floats and integers in cells
+}}}
+
+CALL:

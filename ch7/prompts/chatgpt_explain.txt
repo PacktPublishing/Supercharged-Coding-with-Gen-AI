@@ -1,0 +1,24 @@
+CONTEXT: you are provided with:
+1. A Python function enclosed with {{{ FUNCTION }}}
+2. Explanation points enclosed with {{ POINTS }}}.
+
+TASK: Explain the function using the explanation points.
+
+FUNCTION: {{{ def get_manhattan_distance(
+        df1: pd.DataFrame,
+        df2: pd.DataFrame,
+) -> float:
+    element_wise_dist: pd.DataFrame = (df1 - df2).abs()
+    dist: Union[np.int64, np.float64] = element_wise_dist.sum().sum()
+    return float(dist)
+}}}
+
+POINTS: {{{
+1. Function’s purpose
+2. Arguments and their types
+3. Step-by-step data flow
+4. Output and its types
+5. Potential edge cases
+}}}
+
+EXPLANATION:

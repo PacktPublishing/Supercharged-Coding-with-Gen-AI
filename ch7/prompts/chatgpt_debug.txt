@@ -1,0 +1,22 @@
+CONTEXT: you are provided with:
+1. A Python function enclosed with {{{ FUNCTION }}}
+2. Arguments requirements enclosed with {{ REQUIREMENTS }}}.
+
+TASK: Call the function with the data requirements
+
+FUNCTION: {{{ def get_manhattan_distance(
+        df1: pd.DataFrame,
+        df2: pd.DataFrame,
+) -> float:
+    element_wise_dist: pd.DataFrame = (df1 - df2).abs()
+    dist: Union[np.int64, np.float64] = element_wise_dist.sum().sum()
+    return float(dist)
+}}}
+
+REQUIREMENTS: {{{
+1. 5 rows
+2. 3 columns
+3. floats and integers in cells
+}}}
+
+CALL:
