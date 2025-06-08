@@ -1,0 +1,6 @@
+CONTEXT: You are provided with a Python function signature enclosed with {{{ FUNCTION }}}.
+TASK: implement the function.
+
+FUNCTION: {{{ def get_geometric_mean(net_returns: Dict[str, float]) -> float: }}}
+
+CODE:

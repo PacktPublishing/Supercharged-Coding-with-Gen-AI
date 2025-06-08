@@ -1,0 +1,5 @@
+CONTEXT: You are provided with a Python function enclosed with {{{ FUNCTION }}} that calls functions that should be completed.
+TASK: Implement the missing functions.
+
+FUNCTION: {{{def get_average_return(net_returns: Dict[str, float]) -> float: \n\tgross_returns: np.ndarray = get_gross_returns(net_returns) \n\tgross_average: float = get_geometric_mean(gross_returns) \n\tnet_average: float = get_net_average(gross_average) \n\treturn net_average }}}
+CODE:
