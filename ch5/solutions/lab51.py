@@ -1,4 +1,6 @@
 import inspect
+from openai import OpenAI
+from openai.types.chat import ChatCompletion
 
 SURROUND = "You will be provided with a Python function enclosed with {{{ Function }}}."
 SINGLE_TASK = "Your task is to generate Google Style docstring for it."
@@ -22,8 +24,6 @@ def get_user_prompt(func: callable) -> str:
 
 
 if __name__ == "__main__":
-    from openai import OpenAI
-    from openai.types.chat import ChatCompletion
 
     client: OpenAI = OpenAI()
 
