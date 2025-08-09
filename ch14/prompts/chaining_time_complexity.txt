@@ -1,0 +1,55 @@
+prompt 1:
+CONTEXT: You are provided with a Python function enclosed with {{{ FUNCTION }}} and examples enclosed with {{{ EXAMPLE}}} / {{{ TIME_COMPLEXITY}}}.
+TASK: return the time complexity of the function.
+
+EXAMPLE 1: {{{
+def get_squared(n: int) -> int:
+    return n ** 2
+}}}
+TIME COMPLEXITY 1: {{{ O(1) }}}
+EXAMPLE 2: {{{
+def get_numbers_up_to_limit(n: int) -> int:
+    result = ""
+    for i in int:
+        result += f"{i}, "
+    return result
+}}}
+TIME COMPLEXITY 2: {{{ O(n) }}}
+
+FUNCTION: {{{
+def fibonacci_recursive(n):
+    if n <= 0:
+        return 0
+    if n == 1:
+        return 1
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+}}}
+
+TIME_COMPLEXITY:
+
+prompt 2:
+CONTEXT: You are provided with runtime benchmark in {{{ BENCHMARKS }}} and a time limit in {{{ LIMIT}}}.
+TASK: What is the largest input that can be computed under the time limit?
+
+BENCHMARKS: {{{
+Runtime for fibonacci_recursive(10): 0.0000 seconds
+
+Runtime for fibonacci_recursive(15): 0.0002 seconds
+
+Runtime for fibonacci_recursive(20): 0.0013 seconds
+
+Runtime for fibonacci_recursive(25): 0.0150 seconds
+
+Runtime for fibonacci_recursive(30): 0.1571 seconds
+
+Runtime for fibonacci_recursive(35): 1.7051 seconds
+
+Runtime for fibonacci_recursive(40): 19.5045 seconds
+}}}
+
+LIMIT: {{{ 100 seconds }}}
+
+MAXIMAL INPUT:
+
+prompt 3:
+Propose an algorithm with an improved time complexity to the function.

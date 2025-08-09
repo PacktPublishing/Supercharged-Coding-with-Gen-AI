@@ -1,0 +1,17 @@
+CONTEXT: You are provided with the function's docstring enclosed with {{{ DOCSTRING }}} and the required input enclosed with {{{ REQUIRED_INPUT }}}.
+TASK: Optimize the function to run read file batches within the runtime limit.
+
+ DOCSTRING: {{{ """
+    Calculate the nth Fibonacci number using a recursive approach.
+
+    Args:
+        n (int): The position in the Fibonacci sequence.
+
+    Returns:
+        int: The nth Fibonacci number.
+    """
+}}}
+
+REQUIRED_INPUT = {{{ 100,000 }}}
+
+IMPROVED IMPLEMENTATION:

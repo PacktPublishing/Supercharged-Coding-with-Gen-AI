@@ -1,0 +1,79 @@
+CONTEXT: You are provided with:
+
+1. Python function enclosed with {{{ FUNCTION }}}
+
+2. RAM usage profiling enclosed with {{{ PROFILING }}}.
+
+3. RAM usage limit enclosed with {{{ LIMIT }}}
+
+TASK: What is the maximal input the function can run in the RAM limit?
+
+FUNCTION: {{{ def get_top_video(path):
+
+    interactions = pd.read_csv(path)
+
+    avg_ratio = interactions.mean(axis=0, skipna=True)
+
+    return avg_ratio.idxmax() }}}
+
+PROFILING: {{{ Profile for input of 100 rows x 100 columns:
+
+Filename: profile_space.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+
+=============================================================
+
+     5     93.2 MiB     93.2 MiB           1   @profile
+
+     6                                         def get_top_video(path):
+
+     7     93.8 MiB      0.6 MiB           1       interactions = pd.read_csv(path)
+
+     8     94.0 MiB      0.2 MiB           1       avg_ratio = interactions.mean(axis=0, skipna=True)
+
+     9     94.0 MiB      0.0 MiB           1       return avg_ratio.idxmax()
+
+top video:  video_82
+
+Filename: profile_space.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+
+=============================================================
+
+     5     94.0 MiB     94.0 MiB           1   @profile
+
+     6                                         def get_top_video(path):
+
+     7    124.0 MiB     29.9 MiB           1       interactions = pd.read_csv(path)
+
+     8    131.6 MiB      7.6 MiB           1       avg_ratio = interactions.mean(axis=0, skipna=True)
+
+     9    131.6 MiB      0.0 MiB           1       return avg_ratio.idxmax()
+
+top video:  video_629
+
+Filename: profile_space.py
+
+
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+
+=============================================================
+
+     5    130.7 MiB    130.7 MiB           1   @profile
+
+     6                                         def get_top_video(path):
+
+     7   1020.4 MiB    889.7 MiB           1       interactions = pd.read_csv(path)
+
+     8   1113.4 MiB     93.0 MiB           1       avg_ratio = interactions.mean(axis=0, skipna=True)
+
+     9   1113.4 MiB      0.0 MiB           1       return avg_ratio.idxmax()
+
+top video:  video_7238}}}
+
+LIMIT: {{{ 5 GB }}}
+
+MAXIMAL ROWS / MAXIMAL COLUMNS:
