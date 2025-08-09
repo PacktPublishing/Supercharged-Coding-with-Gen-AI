@@ -1,0 +1,302 @@
+CONTEXT: You are provided with 
+1. Python function enclosed with {{{ FUNCTION }}} that has a bug. 
+2. Test suite code enclosed with {{{ UNIT TESTS }}}.
+3. Error message enclosed with {{{ ERROR }}}.
+TASK: Fix the function implementation 
+FUNCTION: {{{ def rect_intersection_area(rect1, rect2):
+    return None}}}
+UNIT TESTS: {{{ import unittest
+from rectangle_intersection import rect_intersection_area
+
+class TestRectangleIntersectionArea(unittest.TestCase):
+    def test_intersecting_rectangles(self):
+        rect1 = (0, 0, 4, 4)
+        rect2 = (2, 2, 6, 6)
+        self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+
+    def test_intersecting_rectangles_swapped(self):
+        rect1 = (2, 2, 6, 6)
+        rect2 = (0, 0, 4, 4)
+        self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+
+    def test_non_intersecting_rectangles(self):
+        rect1 = (0, 0, 2, 2)
+        rect2 = (3, 3, 5, 5)
+        self.assertEqual(rect_intersection_area(rect1, rect2), 0)
+
+    def test_touching_rectangles_corner(self):
+        rect1 = (0, 0, 2, 2)
+        rect2 = (2, 2, 4, 4)
+        self.assertEqual(rect_intersection_area(rect1, rect2), 0)
+
+    def test_contained_rectangle1(self):
+        rect1 = (0, 0, 4, 4)
+        rect2 = (1, 1, 3, 3)
+        self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+
+    def test_contained_rectangle2(self):
+        rect1 = (1, 1, 3, 3)
+        rect2 = (0, 0, 4, 4)
+        self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+
+    def test_partial_overlap(self):        
+        rect1 = (0, 0, 5, 5)        
+        rect2 = (3, 3, 7, 7)        
+        self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+
+    def test_touching_inside(self):
+        rect1 = (0, 0, 3, 3)
+        rect2 = (2, 2, 3, 3)
+        self.assertEqual(rect_intersection_area(rect1, rect2), 1)
+
+    def test_touching_corner(self):
+        rect1 = (0, 0, 3, 3)
+        rect2 = (2, 2, 3, 3)        
+        self.assertEqual(rect_intersection_area(rect1, rect2), 1)   
+        
+    def test_touching_side_inside(self):        
+        rect1 = (0, 0, 3, 3)        
+        rect2 = (1, 0, 2, 1)        
+        self.assertEqual(rect_intersection_area(rect1, rect2), 1)    
+    
+    def test_touching_side_outside(self):        
+        rect1 = (0, 0, 3, 3)        
+        rect2 = (-2, 1, 0, 2)        
+        self.assertEqual(rect_intersection_area(rect1, rect2), 0)    
+
+    def test_identical_rectangles(self):        
+        rect1 = (-1, 1, 3, 2)        
+        rect2 = (-1, 1, 3, 2)        
+        self.assertEqual(rect_intersection_area(rect1, rect2), 4)    
+
+    def test_no_height(self):        
+        rect1 = (-1, -1, -1, 4)        
+        rect2 = (-1, 1, 3, 2)        
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2) 
+
+    def test_no_width(self):        
+        rect1 = (-1, -1, 4, 4)        
+        rect2 = (-1, 1, -1, 10)        
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2)
+
+    def test_single_point_rectangle(self):        
+        rect1 = (-1, -1, 4, 4)        
+        rect2 = (2, 2, 2, 2)
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2)
+
+    def test_single_point_rectangle_outside(self):
+        rect1 = (-1, -1, 4, 4)
+        rect2 = (5, 10, 5, 10)
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2)
+
+    def test_single_point_rectangle_inside(self):
+        rect1 = (-1, -1, 4, 4)
+        rect2 = (2, 2, 2, 2)
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2)
+
+    def test_x_axis_rect1(self):
+        rect1 = (-1, -1, -2, 4)
+        rect2 = (1, 2, 3, 4)
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2)
+
+    def test_x_axis_rect2(self):
+        rect2 = (-1, -1, -2, 4)
+        rect1 = (1, 2, 3, 4)
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2)
+
+    def test_y_axis_rect1(self):
+        rect1 = (0, 4, 2, 1)
+        rect2 = (1, 2, 3, 4)
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2)
+
+    def test_y_axis_rect2(self):
+        rect1 = (1, 2, 3, 4)
+        rect2 = (0, 4, 2, 1)
+        with self.assertRaises(ValueError):
+            rect_intersection_area(rect1, rect2)
+
+if __name__ == "__main__":
+    unittest.main()          }}}
+ERROR: {{{ (clinical_trials) C:\Users\Peter>C:/Users/Peter/anaconda3/envs/clinical_trials/python.exe "c:/Users/Peter/Dropbox/Book Writing/testing chapter/rectintersect2/test_rectangle_intersection.py"
+FFFFFFFFFFFFFFFFFFFFF
+======================================================================
+FAIL: test_contained_rectangle1 (__main__.TestRectangleIntersectionArea.test_contained_rectangle1)  
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 28, in test_contained_rectangle1
+    self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+AssertionError: None != 4
+
+======================================================================
+FAIL: test_contained_rectangle2 (__main__.TestRectangleIntersectionArea.test_contained_rectangle2)  
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 33, in test_contained_rectangle2
+    self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+AssertionError: None != 4
+
+======================================================================
+FAIL: test_identical_rectangles (__main__.TestRectangleIntersectionArea.test_identical_rectangles)  
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 63, in test_identical_rectangles
+    self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+AssertionError: None != 4
+
+======================================================================
+FAIL: test_intersecting_rectangles (__main__.TestRectangleIntersectionArea.test_intersecting_rectangles)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 8, in test_intersecting_rectangles
+    self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+AssertionError: None != 4
+
+======================================================================
+FAIL: test_intersecting_rectangles_swapped (__main__.TestRectangleIntersectionArea.test_intersecting_rectangles_swapped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 13, in test_intersecting_rectangles_swapped
+    self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+AssertionError: None != 4
+
+======================================================================
+FAIL: test_no_height (__main__.TestRectangleIntersectionArea.test_no_height)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 68, in test_no_height
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_no_width (__main__.TestRectangleIntersectionArea.test_no_width)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 74, in test_no_width
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_non_intersecting_rectangles (__main__.TestRectangleIntersectionArea.test_non_intersecting_rectangles)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 18, in test_non_intersecting_rectangles
+    self.assertEqual(rect_intersection_area(rect1, rect2), 0)
+AssertionError: None != 0
+
+======================================================================
+FAIL: test_partial_overlap (__main__.TestRectangleIntersectionArea.test_partial_overlap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 38, in test_partial_overlap
+    self.assertEqual(rect_intersection_area(rect1, rect2), 4)
+AssertionError: None != 4
+
+======================================================================
+FAIL: test_single_point_rectangle (__main__.TestRectangleIntersectionArea.test_single_point_rectangle)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 80, in test_single_point_rectangle
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_single_point_rectangle_inside (__main__.TestRectangleIntersectionArea.test_single_point_rectangle_inside)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 92, in test_single_point_rectangle_inside
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_single_point_rectangle_outside (__main__.TestRectangleIntersectionArea.test_single_point_rectangle_outside)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 86, in test_single_point_rectangle_outside
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_touching_corner (__main__.TestRectangleIntersectionArea.test_touching_corner)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 48, in test_touching_corner
+    self.assertEqual(rect_intersection_area(rect1, rect2), 1)
+AssertionError: None != 1
+
+======================================================================
+FAIL: test_touching_inside (__main__.TestRectangleIntersectionArea.test_touching_inside)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 43, in test_touching_inside
+    self.assertEqual(rect_intersection_area(rect1, rect2), 1)
+AssertionError: None != 1
+
+======================================================================
+FAIL: test_touching_rectangles_corner (__main__.TestRectangleIntersectionArea.test_touching_rectangles_corner)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 23, in test_touching_rectangles_corner
+    self.assertEqual(rect_intersection_area(rect1, rect2), 0)
+AssertionError: None != 0
+
+======================================================================
+FAIL: test_touching_side_inside (__main__.TestRectangleIntersectionArea.test_touching_side_inside)  
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 53, in test_touching_side_inside
+    self.assertEqual(rect_intersection_area(rect1, rect2), 1)
+AssertionError: None != 1
+
+======================================================================
+FAIL: test_touching_side_outside (__main__.TestRectangleIntersectionArea.test_touching_side_outside)----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 58, in test_touching_side_outside
+    self.assertEqual(rect_intersection_area(rect1, rect2), 0)
+AssertionError: None != 0
+
+======================================================================
+FAIL: test_x_axis_rect1 (__main__.TestRectangleIntersectionArea.test_x_axis_rect1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 98, in test_x_axis_rect1
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_x_axis_rect2 (__main__.TestRectangleIntersectionArea.test_x_axis_rect2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 104, in test_x_axis_rect2
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_y_axis_rect1 (__main__.TestRectangleIntersectionArea.test_y_axis_rect1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 110, in test_y_axis_rect1
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_y_axis_rect2 (__main__.TestRectangleIntersectionArea.test_y_axis_rect2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Peter\Dropbox\Book Writing\testing chapter\rectintersect2\test_rectangle_intersection.py", line 116, in test_y_axis_rect2
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.008s
+
+FAILED (failures=21)
+ }}}
+CODE:

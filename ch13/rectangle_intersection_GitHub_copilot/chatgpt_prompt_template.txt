@@ -1,0 +1,9 @@
+CONTEXT: You are provided with 
+1. Python function enclosed with {{{ FUNCTION }}} that has a bug. 
+2. Test suite code enclosed with {{{ UNIT TESTS }}}.
+3. Error message enclosed with {{{ ERROR }}}.
+TASK: Fix the function implementation 
+FUNCTION: {{{ ...omitted for brevity ...}}}
+UNIT TESTS: {{{ ... omitted for brevity ... }}}
+ERROR: {{{ ... omitted for brevity ... }}}
+CODE:
