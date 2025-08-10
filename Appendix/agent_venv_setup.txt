@@ -1,0 +1,17 @@
+CONTEXT: You are provided with:
+1. Python version enclosed with {{{ VERSION }}}
+2. Requirements file path enclosed with {{{ PATH }}}
+3. Environment tool enclosed with {{{ TOOL }}}
+4. Environment name enclosed with {{{ ENV NAME }}}
+5. Location for the environment enclosed with {{{ Location }}}
+
+TASK: Set up a virtual environment using the Python version, requirements file path, using the provided name and location for this project.
+
+VERSION: {{{ Python 3.11 }}
+PATH: {{{ requirements.txt }}}
+TOOL: {{{ venv }}}
+ENV NAME: {{{ .supercharged }}}
+LOCATION: {{{ project root }}}
+
+
+Prompt 2 [ignore files]:
