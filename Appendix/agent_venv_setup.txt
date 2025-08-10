@@ -12,6 +12,3 @@ PATH: {{{ requirements.txt }}}
 TOOL: {{{ venv }}}
 ENV NAME: {{{ .supercharged }}}
 LOCATION: {{{ project root }}}
-
-
-Prompt 2 [ignore files]:
