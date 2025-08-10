@@ -1,5 +1,6 @@
 # Virtual environments
 .venv/
+.supercharged/
 
 # Python
 __pycache__/
